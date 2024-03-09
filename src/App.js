@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Resize, ResizeVertical, ResizeHorizon } from "react-resize-layout";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Resize>
+      <ResizeHorizon></ResizeHorizon>
+
+      <ResizeHorizon minWidth="5px">
+        <Resize>
+          <ResizeVertical height="80%">
+            <Resize handleWidth="3px">
+              <ResizeHorizon width="400px" minWidth="10px">
+              CompOne
+              </ResizeHorizon>
+
+              <ResizeHorizon minWidth="5px">CompTwo</ResizeHorizon>
+            </Resize>
+          </ResizeVertical>
+
+          <ResizeVertical minHeight="5px">CompThree</ResizeVertical>
+        </Resize>
+      </ResizeHorizon>
+    </Resize>
   );
 }
-
-export default App;
